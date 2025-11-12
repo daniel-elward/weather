@@ -1,8 +1,8 @@
 import "./style.css";
+import {apiRequest} from "./api.js"
+import {populateLocation, populateCurrent, populateForecast} from "./dom.js";
 
-import {} from "./api.js"
-
-function userSearch(){
+export function userSearch(){
     const form = document.querySelector(".userSearch");
     const submit = document.getElementById("submitButton");
 
@@ -11,8 +11,24 @@ function userSearch(){
         const result = new FormData(form, submit);
         const userSearch = result.get("search")
 
-        document.querySelector(".resultsBody").style.display = "grid"
+        console.log(userSearch);
+
+        // document.querySelector(".resultsBody").style.display = "grid"
+
+        apiRequest(userSearch).then(result => {
+            // do things with the result here
+            console.log(result);
+
+            populateLocation(result.resolvedAddress);
+            populateCurrent(result.currentConditions.conditions)
+            populateForecast(result.days)
+
+            return result;
+        })
+        
     });
 };
 
 userSearch();
+
+// populateResults("test", "test2", "test3")
