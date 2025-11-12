@@ -20,8 +20,8 @@ export function userSearch(){
             console.log(result);
 
             populateLocation(result.resolvedAddress);
-            populateCurrent(result.currentConditions.conditions)
-            populateForecast(result.days)
+            // populateCurrent(result.currentConditions.conditions)
+            // populateForecast(result.days)
 
             return result;
         })
