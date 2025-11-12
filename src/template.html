@@ -11,11 +11,20 @@
 
     <form class="userSearch">
         <label for="search">
-            <input type="text" name="search" placeholder="Search for a location ...">
+            <input type="text" name="search" placeholder="Search for a location ..." required>
         </label> <br>
 
-        <button type="submit">Get the forecast</button>
+        <button id="searchButton" type="submit">Get the forecast</button>
     </form>
+
+    <div class="resultsBody">
+        <div class="location"><p>location</p></div>
+
+            <div class="currentWeather"><p>current weather</p></div>
+
+                <div class="forecast">
+                    <p>forecast</p>
+                </div>
 </div>
 </body>
 </html>

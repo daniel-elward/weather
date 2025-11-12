@@ -7,8 +7,7 @@ async function apiRequest(queryLocation){
 
 apiRequest("hartland, NB").then(result => {
     // do things with the result here
-    console.log("From inside the func");
-    console.log(result);
+    //console.log(result);
 
     return result;
 })
