@@ -21,7 +21,7 @@ export function userSearch(){
 
             populateLocation(result.resolvedAddress);
             // populateCurrent(result.currentConditions.conditions)
-            // populateForecast(result.days)
+            populateForecast(result)
 
             return result;
         })
