@@ -47,7 +47,7 @@ form{
 }
 
 .wrapper{
-    width: 70%;
+    width: 85%;
     background-color: white;
     margin: 0 auto;
     margin-top: 40px;
@@ -125,7 +125,7 @@ form{
     margin: 30px auto;
 }
 
-/* 14 day forecast section */
+/* 8 day forecast section */
 .forecast{
     padding: 15px;
     background: white;
@@ -156,7 +156,11 @@ form{
     margin: 5px;
 }
 
-.forecastCard{
+/* look for a better way to do this */
+.forecastCard0, .forecastCard1, .forecastCard2, .forecastCard3,
+.forecastCard4, .forecastCard5, .forecastCard6, .forecastCard7,
+.forecastCard8, .forecastCard9, .forecastCard10, .forecastCard11,
+.forecastCard12, .forecastCard13{
     min-width: 200px;
     width: 30%;
     margin: 10px;

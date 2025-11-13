@@ -17,7 +17,7 @@ export function userSearch(){
             // do things with the result here
             console.log(result);
 
-            populateLocation(result.resolvedAddress);
+            populateLocation(result);
             // populateCurrent(result.currentConditions.conditions)
             populateForecast(result)
 
