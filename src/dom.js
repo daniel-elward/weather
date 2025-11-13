@@ -7,18 +7,96 @@ export function populateLocation(returnedObject){
                 locationHeader.innerHTML = returnedObject.resolvedAddress;
 };
 
-export function populateCurrent(foo){
+export function populateCurrent(returnedObject){
     const current = document.querySelector(".currentWeather");
 
-    current.innerHTML = `${foo}`; 
+    createElement("nextHour", current, "h1");
+        const next = document.querySelector(".nextHour");
+            next.innerHTML = "Now";
+
+    createElement("day", current, "h2");
+                const dayDOM = document.querySelector(".day");
+
+                    const daysArray = ["Sunday", "Monday", "Tueday", "Wednesday", 
+                                "Thursday", "Friday", "Saturday"];
+
+                    const datetime = returnedObject.days[0].datetime;
+                    const dateObj = new Date(datetime)
+                    const day = dateObj.getDay();
+
+                    dayDOM.innerHTML = daysArray[day];
+
+    createElement("date", current, "h2");
+                const dateDOM = document.querySelector(".date");
+
+                const monthArray = ["January", "February", "March", "April", "May", 
+                                    "June", "July", "August", "September", "October", 
+                                    "November", "December"]
+                const dayArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
+                                "11", "12", "13", "14", "15", "16", "17", "18", "19", 
+                                "20", "21", "22", "23", "24", "25", "26", "27",  "28", 
+                                "29", "30", "31"];
+
+                const date = dateObj.getDate();
+                    const month = dateObj.getMonth();
+                            dateDOM.innerHTML = `${dayArray[date]} ${monthArray[month]}`;
+
+    createDiv("currentWeatherIcon", current);
+        const icon = document.querySelector(".currentWeatherIcon");
+            createElement("currentIcon", icon, "img");
+                const icon2 = document.querySelector(".currentIcon");
+                    icon2.src = tempImage;
+                        icon2.width = 160;
+                            icon2.height = 160;
+
+    createDiv("currentTemp", current);
+        const temp = document.querySelector(".currentTemp");
+            createElement("cTemp", temp, "h2");
+                const cTemp = document.querySelector(".cTemp");
+                    cTemp.innerHTML = `${returnedObject.currentConditions.temp} &degc`;
+    
+    createElement("feelsLike", current, "p");
+        const feelsLikeDOM = document.querySelector(".feelsLike");
+            feelsLikeDOM.innerHTML = `feels like ${returnedObject.currentConditions.feelslike}`;
+
+    createDiv("fallAmounts", current);
+        const amountsDOM = document.querySelector(".fallAmounts");
+            createElement("snow", amountsDOM, "p");
+            createElement("rain", amountsDOM, "p");
+                const snow = document.querySelector(".snow")
+                const rain = document.querySelector(".rain")
+                    snow.innerHTML = returnedObject.currentConditions.snow
+                    rain.innerHTML = returnedObject.currentConditions.precip
+                        createElement("snowAmount", snow, "img");
+                        createElement("rainAmount", rain, "img");
+                            const snowAmountDOM = document.querySelector(".snowAmount");
+                            const rainAmountDOM = document.querySelector(".rainAmount");
+                                snowAmountDOM.src = tempImage;
+                                snowAmountDOM.width = 30;
+                                snowAmountDOM.height = 30;
+                                    rainAmountDOM.src = tempImage;
+                                    rainAmountDOM.width = 30;
+                                    rainAmountDOM.height = 30;
 };
 
 export function populateForecast(returnedObject){
-    const cardWrapper = document.querySelector(".cardWrapper");
-    const forecastNodeList = returnedObject.days;
 
+    const forecastDOM = document.querySelector(".forecast");
+    
+    createElement("forecastTitle", forecastDOM, "h1");
+        const title = document.querySelector(".forecastTitle");
+            title.innerHTML = "8-Day Forecast";
+
+    const cardWrapper = document.querySelector(".cardWrapper");
+    if(cardWrapper != null){cardWrapper.remove()};
+
+    createDiv("cardWrapper", forecastDOM);
+        const card = document.querySelector(".cardWrapper");
+
+    
     // 2 and 16 sets the 8 day forecast to start 'tomorrow'
     for (let i = 2; i < 10; i++) {
+        const cardWrapper = document.querySelector(".cardWrapper");
 
         createDiv(`forecastCard${i}`, cardWrapper);
                 const forecastCard = document.querySelector(`.forecastCard${i}`);
@@ -89,19 +167,3 @@ function createElement(name, target, type){
         element.classList.add(name);
             target.appendChild(element);
 };
-
-/*
-
-
-<div class="dateTime"><p>Tuesday</p><p>15:34</p></div>
-<div class="currentWeatherIcon">
-    <img src="./images/thunder.png" width="160px" height="160px">
-</div>
-    <div class="currentTemp"><h2>2c</h2></div>
-        <p class="feelsLike">feels like -1c</p>
-            <div class="fallAmounts">
-                <p><img src="./images/snowflake.png" width="20px" height="20px">  1cm - 3cm </p>
-                <p><img src="./images/drop.png" width="20px" height="20px"> ~ 1cm</p>
-            </div>
-
-*/

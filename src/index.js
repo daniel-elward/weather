@@ -8,6 +8,7 @@ export function userSearch(){
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
+
         const result = new FormData(form, submit);
         const userSearch = result.get("search")
 
@@ -18,7 +19,7 @@ export function userSearch(){
             console.log(result);
 
             populateLocation(result);
-            // populateCurrent(result.currentConditions.conditions)
+            populateCurrent(result)
             populateForecast(result)
 
             return result;
@@ -28,5 +29,3 @@ export function userSearch(){
 };
 
 userSearch();
-
-// populateResults("test", "test2", "test3")

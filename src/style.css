@@ -92,6 +92,7 @@ form{
 /* current weather section */
 .currentWeather{
     padding: 15px;
+    text-align: center;
     background: white;    
     border-top: 10px solid #009797;
     border-bottom-left-radius: 15px;
@@ -103,8 +104,8 @@ form{
     margin: 7px;
 }
 
-.currentTemp h2{
-    font-size: 2.7em;
+.cTemp h2{
+    font-size: 3em;
 }
 
 .currentWeatherIcon{
