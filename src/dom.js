@@ -18,13 +18,40 @@ export function populateForecast(returnedObject){
     createDiv("forecastCard", cardWrapper);
         const forecastCard = document.querySelector(".forecastCard");
 
-    createElement("date", forecastCard, "h1");
-        const date = document.querySelector(".date");
-            date.innerHTML = returnedObject.days[1].datetime;
+    createElement("day", forecastCard, "h1");
+        const dayDOM = document.querySelector(".day");
 
-    createElement("test", forecastCard, "h2");
-        const test = document.querySelector(".test")
-            test.innerHTML = returnedObject.days[1].feelslike;
+            const daysArray = ["Sun", "Mon", "Tue", "Wed", 
+                          "Thu", "Fri", "Sat"];
+
+            const datetime = returnedObject.days[0].datetime;
+            const dateObj = new Date(datetime)
+            const day = dateObj.getDay();
+
+            dayDOM.innerHTML = daysArray[day];
+
+    // come back to this and look at a date library to make
+    // the code better
+    createElement("date", forecastCard, "h2");
+        const dateDOM = document.querySelector(".date");
+
+        const monthArray = ["Jan", "Feb", "Mar", "Apr", "May", 
+                            "Jun", "Jul", "Aug", "Sep", "Oct", 
+                            "Nov", "Dec"]
+        const dayArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
+                        "11", "12", "13", "14", "15", "16", "17", "18", "19", 
+                        "20", "21", "22", "23", "24", "25", "26", "27",  "28", 
+                        "29", "30", "31"];
+
+        const date = dateObj.getDate();
+            const month = dateObj.getMonth();
+                const year = dateObj.getFullYear();
+                    dateDOM.innerHTML = `${dayArray[date]} ${monthArray[month]} ${year}`;
+
+
+    createElement("feels", forecastCard, "p");
+        const foo = document.querySelector(".feels")
+            foo.innerHTML = `Feels like ${returnedObject.days[0].feelslike}`;
 
     createDiv("mainForecastIcon", forecastCard);
         const card = document.querySelector(".mainForecastIcon");
@@ -39,10 +66,10 @@ export function populateForecast(returnedObject){
         const range = document.querySelector(".tempRange");
             createElement("tempLow", range, "p");
                 const lowP = document.querySelector(".tempLow");
-                    lowP.innerHTML = `lows of ${returnedObject.days[1].tempmin}`
+                    lowP.innerHTML = `lows of ${returnedObject.days[0].tempmin}`
             createElement("tempHigh", range, "p");
                 const highP = document.querySelector(".tempHigh");
-                    highP.innerHTML = `lows of ${returnedObject.days[1].tempmax}`
+                    highP.innerHTML = `lows of ${returnedObject.days[0].tempmax}`
 
 };
 

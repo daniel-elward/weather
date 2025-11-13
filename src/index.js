@@ -11,8 +11,6 @@ export function userSearch(){
         const result = new FormData(form, submit);
         const userSearch = result.get("search")
 
-        console.log(userSearch);
-
         // document.querySelector(".resultsBody").style.display = "grid"
 
         apiRequest(userSearch).then(result => {

@@ -134,6 +134,10 @@ form{
     border-bottom-right-radius: 15px;
 }
 
+.feels {
+    text-align: center;
+}
+
 .forecast h1{
     font-size: 1.5em;
     margin: 7px;
