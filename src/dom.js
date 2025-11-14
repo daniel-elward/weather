@@ -1,5 +1,18 @@
 import tempImage from "./images/temp.png";
 
+// This was image handling code was taken from an AI overview.
+// I couldn't work out how to get all my images imported.
+
+const images = require.context('./images', false, /\.(png|jpe?g|gif|svg)$/);
+const imageMap = {};
+
+images.keys().forEach((item) => {
+    const imageName = item.replace('./', ''); // Get filename
+    imageMap[imageName] = images(item);
+});
+
+// console.log(imageMap);
+
 export function populateLocation(returnedObject){
     const location = document.querySelector(".location");
         createElement("locationHeading", location, "h1");
@@ -45,9 +58,9 @@ export function populateCurrent(returnedObject){
         const icon = document.querySelector(".currentWeatherIcon");
             createElement("currentIcon", icon, "img");
                 const icon2 = document.querySelector(".currentIcon");
-                    icon2.src = tempImage;
-                        icon2.width = 160;
-                            icon2.height = 160;
+                    icon2.src = imageMap[`${returnedObject.currentConditions.icon}.svg`];
+                        icon2.width = 130;
+                            icon2.height = 130;
 
     createDiv("currentTemp", current);
         const temp = document.querySelector(".currentTemp");
@@ -71,10 +84,10 @@ export function populateCurrent(returnedObject){
                         createElement("rainAmount", rain, "img");
                             const snowAmountDOM = document.querySelector(".snowAmount");
                             const rainAmountDOM = document.querySelector(".rainAmount");
-                                snowAmountDOM.src = tempImage;
+                                snowAmountDOM.src = imageMap["snowFlake.png"];
                                 snowAmountDOM.width = 30;
                                 snowAmountDOM.height = 30;
-                                    rainAmountDOM.src = tempImage;
+                                    rainAmountDOM.src = imageMap["rainDrop.png"];
                                     rainAmountDOM.width = 30;
                                     rainAmountDOM.height = 30;
 };
@@ -141,7 +154,7 @@ export function populateForecast(returnedObject){
 
             createElement("cardIcon", card, "img");
                 const img = forecastCard.querySelector(".cardIcon");
-                    img.src = tempImage;
+                    img.src = imageMap[`${returnedObject.days[i].icon}.svg`];
                         img.width = "80";
                         img.height = "80";
 
@@ -167,3 +180,4 @@ function createElement(name, target, type){
         element.classList.add(name);
             target.appendChild(element);
 };
+
