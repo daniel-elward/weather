@@ -7,7 +7,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 /* #00EEFF; */
@@ -60,6 +60,11 @@ form{
     text-align: center;
 }
 
+.resultsBody h1{
+    font-size: 1.5em;
+    margin: 7px;
+}
+
 .resultsBody{
     width: 100%;
     padding: 15px 30px;
@@ -84,10 +89,10 @@ form{
     border-bottom-right-radius: 15px;
 }
 
-.location h1 {
+/* .location h1 {
     font-size: 1.8em;
     margin: 7px;
-}
+} */
 
 /* current weather section */
 .currentWeather{
@@ -99,10 +104,10 @@ form{
     border-bottom-right-radius: 15px;
 }
 
-.currentWeather h1{
+/* .currentWeather h1{
     font-size: 1.5em;
     margin: 7px;
-}
+} */
 
 .cTemp h2{
     font-size: 3em;
@@ -126,6 +131,38 @@ form{
     margin: 30px auto;
 }
 
+/* hourly section */
+.hourly{
+    padding: 15px;
+    background: white;
+    border-top: 10px solid #009797;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    grid-column: 2;
+}
+
+.hourlyCardWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+/* .hourly h1{
+    font-size: 1.5em;
+    margin: 7px;
+} */
+
+.hourlyCard0, .hourlyCard1, .hourlyCard2, .hourlyCard3, 
+.hourlyCard4, .hourlyCard5, .hourlyCard6, .hourlyCard7 {
+    min-width: 100px;
+    width: 20%;
+    margin: 10px;
+    background-color: #00eeff67;
+    border-top: 10px solid #009797;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 /* 8 day forecast section */
 .forecast{
     padding: 15px;
@@ -133,16 +170,17 @@ form{
     border-top: 10px solid #009797;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    grid-column: 2;
 }
 
 .feels {
     text-align: center;
 }
 
-.forecast h1{
+/* .forecast h1{
     font-size: 1.5em;
     margin: 7px;
-}
+} */
 
 .cardWrapper{
     display: flex;
@@ -151,7 +189,7 @@ form{
 }
 
 .cardWrapper h1, h2{
-    font-size: 1.3em;
+    font-size: 1.1em;
     color: rgb(80, 80, 80);
     text-align: center;
     margin: 5px;
@@ -162,8 +200,8 @@ form{
 .forecastCard4, .forecastCard5, .forecastCard6, .forecastCard7,
 .forecastCard8, .forecastCard9, .forecastCard10, .forecastCard11,
 .forecastCard12, .forecastCard13{
-    min-width: 200px;
-    width: 30%;
+    min-width: 100px;
+    width: 20%;
     margin: 10px;
     background-color: #00eeff67;
     border-top: 10px solid #009797;

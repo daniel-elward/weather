@@ -1,6 +1,6 @@
 import "./style.css";
 import {apiRequest} from "./api.js"
-import {populateLocation, populateCurrent, populateForecast} from "./dom.js";
+import {populateLocation, populateCurrent, populateForecast, populateHourly} from "./dom.js";
 
 export function userSearch(){
     const form = document.querySelector(".userSearch");
@@ -19,8 +19,9 @@ export function userSearch(){
             console.log(result);
 
             populateLocation(result);
-            populateCurrent(result)
-            populateForecast(result)
+            populateCurrent(result);
+            populateHourly(result);
+            populateForecast(result);
 
             return result;
         })

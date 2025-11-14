@@ -1,8 +1,5 @@
-import tempImage from "./images/temp.png";
-
 // This was image handling code was taken from an AI overview.
 // I couldn't work out how to get all my images imported.
-
 const images = require.context('./images', false, /\.(png|jpe?g|gif|svg)$/);
 const imageMap = {};
 
@@ -10,8 +7,6 @@ images.keys().forEach((item) => {
     const imageName = item.replace('./', ''); // Get filename
     imageMap[imageName] = images(item);
 });
-
-// console.log(imageMap);
 
 export function populateLocation(returnedObject){
     const location = document.querySelector(".location");
@@ -92,7 +87,37 @@ export function populateCurrent(returnedObject){
                                     rainAmountDOM.height = 30;
 };
 
+export function populateHourly(returnedObject){
+
+    //title div is duplicating on resubmit
+    //fix later
+    
+    const hourlyDOM = document.querySelector(".hourly");
+
+    createElement("hourlyTitle", hourlyDOM, "h1");
+    const title = document.querySelector(".hourlyTitle");
+    title.innerHTML = "Hourly";
+
+    createDiv("hourlyCardWrapper", hourlyDOM);
+    const hourlyCardWrapper = document.querySelector(".hourlyCardWrapper");
+
+    // if(hourlyCardWrapper != null){hourlyCardWrapper.remove()};
+
+    for(let i = 0; i < 5; i ++) {
+
+        createDiv(`hourlyCard${i}`, hourlyCardWrapper);
+        const hourlyCard = document.querySelector(`.hourlyCard${i}`);
+
+        createElement("hour", hourlyCard, "h1");
+        const hourDOM = hourlyCard.querySelector(".hour");
+        hourDOM.innerHTML = `${returnedObject.days[0].hours[3].datetime}PM`; //make this dynamic
+    };
+};
+
 export function populateForecast(returnedObject){
+
+    //title div is duplicating on resubmit
+    //fix later
 
     const forecastDOM = document.querySelector(".forecast");
     
@@ -101,6 +126,7 @@ export function populateForecast(returnedObject){
             title.innerHTML = "8-Day Forecast";
 
     const cardWrapper = document.querySelector(".cardWrapper");
+
     if(cardWrapper != null){cardWrapper.remove()};
 
     createDiv("cardWrapper", forecastDOM);
