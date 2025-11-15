@@ -20,7 +20,6 @@ export function userSearch(){
 
             populateLocation(result);
             populateCurrent(result);
-            populateHourly(result);
             populateForecast(result);
 
             return result;
